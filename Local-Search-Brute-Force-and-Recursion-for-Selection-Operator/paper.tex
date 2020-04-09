@@ -1,0 +1,57 @@
+% This file demonstrates how to use the IEEEConf LaTeX2e macro package,
+% to prepare a manuscript for proceedings on CD of the conference
+% FedCSIS
+%
+\documentclass[conference]{IEEEtran}
+%\documentclass[a4paper]{IEEEconf}
+
+\usepackage{balance}
+\IEEEoverridecommandlockouts 
+\usepackage[dvips]{graphicx}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{listings}
+\usepackage[OT4,T1]{fontenc}
+\usepackage[cmex10]{amsmath}
+\interdisplaylinepenalty=2500
+\usepackage{url}
+\usepackage{multirow}
+
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}[remark]{Example}
+
+\title{Local Search, Brute-Force and Recursion for Selection Operator\thanks{This work was not supported by Velbazhd Software LLC and Bulgarian Ministry of Education and Science.}}
+
+\author{\IEEEauthorblockN{Petar Tomov, Iliyan Zankinski, Todor Balabanov \textsuperscript{\tiny{0000-0003-3139-069X}}}
+\IEEEauthorblockA{Institute of Information and Communication Technologies \\ Bulgarian Academy of Sciences \\ acad. Georgi Bonchev Str., block 2, 1113 Sofia, Bulgaria \\p.tomov@iit.bas.bg iliyan@hsi.iccs.bas.bg todorb@iinf.bas.bg}}
+%
+% Bulgarian Academy of Sciences
+% Institute of Information and Communication Technologies
+% acad. Georgi Bonchev Str., block 2, office 514, 1113 Sofia, Bulgaria
+% http://www.iict.bas.bg/
+% iict@bas.bg
+%
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Genetic algorithms are heuristics inspired by the processes in the biological evolution. They have a main application in the field of global optimization. The optimization process is organized into three common operations - crossover, mutation, and selection. The crossover and the mutation are used for recombination and do produce new individuals to the population. Selection is used for appointing better parents during the reproduction process. Many different selection operators are well described in the literature. In the group of the most used are: Proportional Selection, Tournament Selection, Rank-Based Selection, Boltzmann Selection, Soft Brood Selection, Disruptive Selection, Nonlinear Ranking Selection, and Competitive Selection. This study proposes an improvement to recursive brute-force selection by the addition of local search on the level of the brute-force. In every level of recursive descent, all local individuals are recombined with each other (brute-force) as many times as there is an improvement (local search). Only the best-found individual after that is sent to the population of the higher level.
+\end{abstract}
+
+\section{Introduction}
+
+\section{Conclusion}
+
+\section*{Acknowledgment}
+
+This research is funded by Velbazhd Software LLC and it is partially supported by the Bulgarian Ministry of Education and Science (contract D01–205/23.11.2018) under the National Scientific Program ``Information and Communication Technologies for a Single Digital Market in Science, Education and Security (ICTinSES)'', approved by DCM \# 577/17.08.2018.
+
+\begin{thebibliography}{99}
+
+\bibitem{}
+
+\end{thebibliography}
+
+\end{document}
