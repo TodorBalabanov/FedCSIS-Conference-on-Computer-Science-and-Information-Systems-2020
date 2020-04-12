@@ -16,6 +16,7 @@
 \interdisplaylinepenalty=2500
 \usepackage{url}
 \usepackage{multirow}
+\usepackage{caption}
 
 \newtheorem{remark}{Remark}[section]
 \newtheorem{example}[remark]{Example}
@@ -42,7 +43,7 @@ Genetic algorithms are heuristics inspired by the processes in the biological ev
 
 \section{Introduction}
 
-In the field of meta-heuristic global optimization, genetic algorithms are well known and widely applied. Genetic algorithms have stochastic nature because random or pseudo-random numbers are extensively used in common operators like crossover, mutation, and selection. Finding global optimum is rarely possible and in most cases, genetic algorithms give sub-optimal solutions. Because of the stochastic nature found solutions can differ between different runs of the optimization process. At the same time, the possibilities for different runs are great option for parallel or distributed computing. Mechanisms in natural evolution have inspired the ideas involved in genetic algorithms. Meta-heuristics are most useful for optimization problems in multidimensional spaces with a high degree of non-linearity. A point in multidimensional space (for genetic algorithms it is the solutions space) is presented as vector of values. The set of vectors in the solutions space forms a population of individuals in terms of genetic algorithms. The size of the population is very problem dependent and it is estimated empirically by trial and error approach. The target function is applied to each individual of the population. The result of this calculation gives the individual's fitness value. The fitness value gets better with approaching the optimum. Individuals with better fitness have better chances to mate and to form a new generation. The mating process consists of two common operators - crossover and mutation. Crossover contributes to the exploration of the solutions space when mutation contributes to the exploitation of the solutions space. Genetic algorithms are heavily researched in the last few decades, but there are still directions for improvements. Such direction is the selection operator. This research focuses on searching for optimum to set of benchmark functions by the addition of local search in brute-force procedure when it is applied in recursive descent. 
+\IEEEPARstart{I}{n} the field of meta-heuristic global optimization, genetic algorithms are well known and widely applied. Genetic algorithms have stochastic nature because random or pseudo-random numbers are extensively used in common operators like crossover, mutation, and selection. Finding global optimum is rarely possible and in most cases, genetic algorithms give sub-optimal solutions. Because of the stochastic nature found solutions can differ between different runs of the optimization process. At the same time, the possibilities for different runs are great option for parallel or distributed computing. Mechanisms in natural evolution have inspired the ideas involved in genetic algorithms. Meta-heuristics are most useful for optimization problems in multidimensional spaces with a high degree of non-linearity. A point in multidimensional space (for genetic algorithms it is the solutions space) is presented as vector of values. The set of vectors in the solutions space forms a population of individuals in terms of genetic algorithms. The size of the population is very problem dependent and it is estimated empirically by trial and error approach. The target function is applied to each individual of the population. The result of this calculation gives the individual's fitness value. The fitness value gets better with approaching the optimum. Individuals with better fitness have better chances to mate and to form a new generation. The mating process consists of two common operators - crossover and mutation. Crossover contributes to the exploration of the solutions space when mutation contributes to the exploitation of the solutions space. Genetic algorithms are heavily researched in the last few decades, but there are still directions for improvements. Such direction is the selection operator. This research focuses on searching for optimum to set of benchmark functions by the addition of local search in brute-force procedure when it is applied in recursive descent. 
 
 Selecting parents for mating can be done according many different strategies. The most important target of successful mating is to select as better individuals as possible more often with the hope that they will produce even better offspring. Selecting parents at random will lead to a very slow convergence of the optimization process. The proportional selection is one of the first improvements in the selection process. The idea behind it is that each individual receives a crossover chance proportional to its fitness value. Tournament selection is another selection strategy in which by competition between a subset of individuals only winners are nominated for mating. Rank selection on the other side uses ranking of individuals in order to determine their chances for mating. Boltzmann selection uses simulated annealing. In this strategy, winners are nominated after a predetermined number of Boltzmann experiments. 
 
@@ -52,7 +53,21 @@ The rest of the paper is organized as follows: After the introductory part propo
 
 \section{Local Search Proposition}
 
+The selection operator described in \cite{} consists of recursive descent and brute-force. There is a predefined depth of recursion levels. On each level of recursion, there is a genetic algorithm sub-population. The size of sub-populations is equal and it is also predefined. All individuals in the leaves of the recursive tree are randomly generated. The brute-force part of the algorithm consists of the fact that each individual mates with each other in the sub-population. Only the best-found individual is promoted to go in the higher sub-population. Each higher sub-population is fulfilled with individuals promoted from the lower levels. The proposed improvement in this selection procedure states that brute-force should be returned as many times as there is an improvement of the best-found individual (Algorithm \ref{algo01}). 
+
+\begin{algorithm}[H]
+\includegraphics[width=1.0\hsize]{fig01.eps}
+\caption{Local Search}
+\label{algo01}
+\end{algorithm}
+
+From one side, such modification dose local search into the surrounding area of the solutions space. On the other side, such modification makes the algorithm with non-deterministic number of individual recombinations. 
+
+\section{Experiments and Results}
+
 \section{Conclusion}
+
+This research extends the brute-force part of the recursive descent procedure in genetic algorithms selection operator with local search. The experimental results show very good efficiency but it comes with the price of higher computational time. Because of the higher computational time, the proposed selection can be used for tasks that have no strict time limitations. As further research, it will be interesting the same selection operator to be implemented in algorithms like differential evolution with different sizes of the sub-populations on different recursive levels like small sizes on low levels and bigger sizes on higher levels. 
 
 \section*{Acknowledgment}
 
