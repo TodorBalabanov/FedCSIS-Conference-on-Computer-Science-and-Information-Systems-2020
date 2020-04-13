@@ -17,6 +17,7 @@
 \usepackage{url}
 \usepackage{multirow}
 \usepackage{caption}
+\usepackage{diagbox}
 
 \newtheorem{remark}{Remark}[section]
 \newtheorem{example}[remark]{Example}
@@ -55,15 +56,134 @@ The rest of the paper is organized as follows: After the introductory part propo
 
 The selection operator described in \cite{} consists of recursive descent and brute-force. There is a predefined depth of recursion levels. On each level of recursion, there is a genetic algorithm sub-population. The size of sub-populations is equal and it is also predefined. All individuals in the leaves of the recursive tree are randomly generated. The brute-force part of the algorithm consists of the fact that each individual mates with each other in the sub-population. Only the best-found individual is promoted to go in the higher sub-population. Each higher sub-population is fulfilled with individuals promoted from the lower levels. The proposed improvement in this selection procedure states that brute-force should be returned as many times as there is an improvement of the best-found individual (Algorithm \ref{algo01}). 
 
-\begin{algorithm}[H]
+\begin{algorithm}[tbp]
 \includegraphics[width=1.0\hsize]{fig01.eps}
-\caption{Local Search}
+\caption{Local search extension.}
 \label{algo01}
 \end{algorithm}
 
 From one side, such modification dose local search into the surrounding area of the solutions space. On the other side, such modification makes the algorithm with non-deterministic number of individual recombinations. 
 
 \section{Experiments and Results}
+
+All experiments are done in 10000-dimensional solutions space. As benchmark functions are selected five very well known functions: Michalewicz, Ackley, Schwefel, Rastrigin, and Griewank. Algorithms are tested with levels of recursive descent from 2 to 7 and with population size from 2 to 11. Table \ref{tab01} shows the calculation time used in both algorithms for the configuration of recursive descent 7 and population size 11. Table \ref{tab02} shows the total number of individuals evaluation (fitness value calculation) in both algorithms for the configuration of recursive descent 7 and population size 11. Because of the limits for the length of this paper the other configurations for recursive level and population size are not presented here, but can be found at this URL address: https://github.com/TodorBalabanov/FedCSIS-Conference-on-Computer-Science-and-Information-Systems-2020/tree/master/Local-Search-Brute-Force-and-Recursion-for-Selection-Operator
+
+\begin{table*}[tbp]
+\caption{Calculation time [ms] for recursion level of 7 and population size of 11.}
+\centering
+\begin{tabular}{|@{\vrule width0ptheight9pt\enspace}l|c|c|c|c|c|c|}
+\hline
+\hfil\bf \backslashbox{Algorithm}{Funcition}  & \bf Michalewicz & \bf Ackley & \bf Schwefel & \bf Rastrigin & \bf Griewank \\
+\hline
+\bf Local Search & 1062492546 & 531027435 & 533232986 & 507650704 & 592370933 \\
+\hline
+\bf Brute-Force & 403141211 & 166733879 & 175069174 & 159862955 & 218428047 \\
+\hline
+\end{tabular}
+\label{tab01}
+\end{table*}
+
+\begin{table*}[tbp]
+\caption{Number of fitness calculations for recursion level of 7 and population size of 11.}
+\centering
+\begin{tabular}{|@{\vrule width0ptheight9pt\enspace}l|c|c|c|c|c|c|}
+\hline
+\hfil\bf \backslashbox{Algorithm}{Funcition}  & \bf Michalewicz & \bf Ackley & \bf Schwefel & \bf Rastrigin & \bf Griewank \\
+\hline
+\bf Local Search & 641125639 & 641024362 & 640914978 & 641092606 & 640830762 \\
+\hline
+\bf Brute-Force & 235794757 & 235794757 & 235794757 & 235794757 & 235794757 \\
+\hline
+\end{tabular}
+\label{tab02}
+\end{table*}
+
+\begin{table*}[tbp]
+\caption{Suboptimal values found for recursion level of 7 and population size of 11.}
+\centering
+\begin{tabular}{|@{\vrule width0ptheight9pt\enspace}l|c|c|c|c|c|c|}
+\hline
+\hfil\bf \backslashbox{Algorithm}{Funcition}  & \bf Michalewicz & \bf Ackley & \bf Schwefel & \bf Rastrigin & \bf Griewank \\
+\hline
+\bf Local Search & -1484.7137949531716 & 21.09334816052046 & 3877924.0971615044 & 170204.87849875208 & 259918.15469527297 \\
+\hline
+\bf Brute-Force & -1439.2296970724608 & 21.114702255301292 & 3919318.729777085 & 171780.33307271387 & 262621.61053178157 \\
+\hline
+\end{tabular}
+\label{tab03}
+\end{table*}
+
+Suboptimal values achieved by both algorithms are presented in Fig. \ref{fig01}-\ref{fig10}. The presented information includes all experimental combinations of recursive descent levels and population sizes. Table \ref{tab03} shows suboptimal values found by both algorithms for the configuration of recursive descent 7 and population size 11. Values achieved with the local search extension are closer to the global optimums.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig03.eps}
+\caption{Michalewicz - Local Search}
+\label{fig01}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig06.eps}
+\caption{Ackley - Local Search}
+\label{fig02}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig09.eps}
+\caption{Schwefel - Local Search}
+\label{fig03}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig12.eps}
+\caption{Rastrigin - Local Search}
+\label{fig04}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig15.eps}
+\caption{Griewank - Local Search}
+\label{fig05}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig18.eps}
+\caption{Michalewicz - Brute Force}
+\label{fig06}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig21.eps}
+\caption{Ackley - Brute Force}
+\label{fig07}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig24.eps}
+\caption{Schwefel - Brute Force}
+\label{fig08}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig27.eps}
+\caption{Rastrigin - Brute Force}
+\label{fig09}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\hsize]{fig30.eps}
+\caption{Griewank - Brute Force}
+\label{fig10}
+\end{figure}
 
 \section{Conclusion}
 
